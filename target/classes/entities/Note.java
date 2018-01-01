@@ -1,16 +1,22 @@
 package entities;
 
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
+import java.util.Date;
 import java.util.UUID;
 
-import entities.Utilies.NoteType;
 
+@Entity
 public class Note {
-	
+	@Id
 	private UUID _id;
 	private String title;
 	private String description;
 	private String user;
 	private NoteType noteType;
+	private boolean isDeleted;
+	private Date date;
 	
 	public Note() {
 		
@@ -22,6 +28,8 @@ public class Note {
 		this.description = description;
 		this.user = user;
 		this.noteType = noteType;
+		this.isDeleted = false;
+		this.date = new Date();
 	}
 
 	public String getTitle() {
@@ -68,4 +76,21 @@ public class Note {
 		this.user = user;
 	}
 
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	
 }
